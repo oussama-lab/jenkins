@@ -1,19 +1,15 @@
 pipeline {
     agent { 
         node {
-            label 'docker-agent-python'
+            label 'jenkins-agent-goes-here'
             }
-      }
-    triggers {
-        pollSCM '* * * * *' // the SCM trigger will run ones every 5 min to update
-    }                       // from the github repo
+        }
     stages {
         stage('Build') {
             steps {
                 echo "Building.."
                 sh '''
-                cd myapp
-                pip install -r requirements.txt
+                echo "doing build stuff.."
                 '''
             }
         }
@@ -21,9 +17,7 @@ pipeline {
             steps {
                 echo "Testing.."
                 sh '''
-                cd myapp
-                python3 hello.py
-                python3 hello.py --name=Oussama
+                echo "doing test stuff.."
                 '''
             }
         }
